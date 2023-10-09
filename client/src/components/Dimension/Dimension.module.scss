@@ -12,8 +12,19 @@
   }
 
   button {
+    background-color: white;
     margin-left: 10px;
     width: 80px;
     border-radius: 20px;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      background-color: #b8efe9;
+    }
+
+    &:active {
+      transition: linear;
+      transform: scale(1.1);
+    }
   }
 }

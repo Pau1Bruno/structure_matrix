@@ -4,12 +4,16 @@ import Dimension from "./components/Dimension/Dimension";
 import Weights from "./components/Weights/Weights";
 import InitialMatrix from "./components/InitialMatrix/InitialMatrix";
 import {horizontalSet, verticalSet} from "./algorithms/structural_sets";
+import Sets from "./components/Sets/Sets";
 
 function App() {
     const [dimension, setDimension] = useState<number>(0);
+    const [horSet, setHorSet] = useState<any>();
+    const [verSet, setVerSet] = useState<any>();
+
     const getInitialMatrix = (matrix: number[][]) => {
-        horizontalSet(matrix);
-        verticalSet(matrix);
+        setHorSet(horizontalSet(matrix));
+        setVerSet(verticalSet(matrix));
         return (matrix);
     }
 
@@ -29,7 +33,7 @@ function App() {
             <Dimension dimension={dimension} setDimension={setDimension}/>
             <Weights dimension={dimension}/>
             <InitialMatrix dimension={dimension} getInitialMatrix={getInitialMatrix}/>
-
+            {verSet && horSet && <Sets horizontalSets={horSet} verticalSets={verSet}/>}
         </div>
     );
 }

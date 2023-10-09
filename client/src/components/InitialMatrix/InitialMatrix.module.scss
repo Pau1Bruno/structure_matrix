@@ -19,9 +19,20 @@
   }
 
   button {
-    margin-top: 10px;
+    margin: 20px;
     width: 70px;
     height: 40px;
     border-radius: 8px;
+    background-color: white;
+
+    &:hover {
+      background-color: #b8efe9;
+    }
+
+    &:active {
+      transition: linear;
+      transform: scale(1.1);
+    }
   }
+
 }
