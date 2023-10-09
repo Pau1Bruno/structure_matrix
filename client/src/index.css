@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+input, button {
+    border: 0;
+}
+
+html {
+    width: 100%;
+    height: 100vh;
+    background-color: #b1d2ee;
+}

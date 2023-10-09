@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+
+  input {
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    border-radius: 8px;
+  }
+
+  button {
+    margin-left: 10px;
+    width: 80px;
+    border-radius: 20px;
+  }
+}
