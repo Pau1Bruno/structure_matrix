@@ -22,7 +22,7 @@ export const verticalSet = (matrix: number[][]) => {
     return verSet;
 }
 
-export const generateD = (horArr: number[][], verArr: number[][], omega: any) => {
+export const generateD = (horArr: number[][], verArr: number[][], omega: Array<number | undefined>): Array<dSet>  => {
     var dimension = horArr.length;
     var resArr = [];
     for (let i = 0; i < dimension; i++) {
@@ -40,6 +40,13 @@ export const generateD = (horArr: number[][], verArr: number[][], omega: any) =>
 
 export const sortD = (dSets: dSet[]) => {
     return dSets.sort((a, b) => b.value?.length - a.value?.length);
+}
+
+export const separateD = (sortedDSets: Array<dSet>): [Array<dSet>, Array<dSet>] => {
+    const includedSetD = sortedDSets.filter((dSet) => dSet.value.includes(dSet.i) && dSet.value.includes(dSet.j));
+    const notIncludedSetD = sortedDSets.filter((dSet) => !(dSet.value.includes(dSet.i) && dSet.value.includes(dSet.j)));
+
+    return [includedSetD, notIncludedSetD];
 }
 
 type dSet = {
