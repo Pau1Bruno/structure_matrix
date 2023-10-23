@@ -22,6 +22,18 @@ const InitialMatrix = ({dimension, getInitialMatrix}: InitialMatrixProps) => {
         getInitialMatrix(initialMatrix);
     }
 
+    const handlePaste = () => {
+        setInitialMatrix([
+            [0,1,0,0,1,1,1],
+            [0,0,0,1,0,0,1],
+            [0,0,0,1,0,1,1],
+            [0,0,0,0,1,0,1],
+            [1,0,1,0,1,1,0],
+            [1,1,1,1,1,0,1],
+            [0,1,0,1,0,1,0],
+        ]);
+    }
+
     return (
         <div className={styles.container}>
             <h3>Задайте структурную матрицу исходной системы:</h3>
@@ -36,6 +48,7 @@ const InitialMatrix = ({dimension, getInitialMatrix}: InitialMatrixProps) => {
                     <Cell key={i} onChange={(e) => changeInputHandler(e, i)}/>
                 )}
             </div>
+            <button onClick={handlePaste}>Подставить пример</button>
             <button onClick={handleClick}>Начать подсчет</button>
         </div>
     );

@@ -22,7 +22,7 @@ export const verticalSet = (matrix: number[][]) => {
     return verSet;
 }
 
-export const generateD = (horArr: number[][], verArr: number[][], omega: Array<number | undefined>): Array<dSet>  => {
+export const generateD = (horArr: number[][], verArr: number[][], omega: Array<number | undefined>): Array<dSet> => {
     var dimension = horArr.length;
     var resArr = [];
     for (let i = 0; i < dimension; i++) {
@@ -39,7 +39,7 @@ export const generateD = (horArr: number[][], verArr: number[][], omega: Array<n
 }
 
 export const sortD = (dSets: dSet[]) => {
-    return dSets.sort((a, b) => b.value?.length - a.value?.length);
+    return dSets.sort((a, b) => b.value.length - a.value.length);
 }
 
 export const separateD = (sortedDSets: Array<dSet>): [Array<dSet>, Array<dSet>] => {
@@ -49,7 +49,43 @@ export const separateD = (sortedDSets: Array<dSet>): [Array<dSet>, Array<dSet>] 
     return [includedSetD, notIncludedSetD];
 }
 
-type dSet = {
+export const generateOmegaMU = (omega10: Array<number | undefined>, includedD: dSet[], hor: any, ver: any) => {
+    var newOmega: any;
+    var newS = [...includedD];
+    var stepD: dSet;
+    var allOmegaSets = [];
+    var allDSets = [];
+
+    for (let i = 0; i < newS.length; i++) {
+        var omegaArr: Array<Array<number | undefined>> = [omega10];
+        var dArr = [includedD];
+        stepD = newS[i]
+        newOmega = [...omega10];
+        while (newOmega && newOmega.length && newS) {
+            newOmega = stepD?.value?.filter((value, i, array) => {
+                return (stepD.i !== value && stepD.j !== value) &&
+                    newOmega.includes(array[i])
+            });
+
+            if (!newOmega) break;
+
+            //  Calculate D(1,1) equals S(1,1)
+            var generatedD = generateD(hor, ver, newOmega);
+            sortD(generatedD);
+
+            omegaArr.push(newOmega);
+            dArr.push(generatedD);
+
+            stepD = generateD(hor, ver, newOmega)[0];
+        }
+        allOmegaSets.push(omegaArr);
+        allDSets.push(dArr);
+    }
+
+    return [allOmegaSets, allDSets];
+}
+
+export type dSet = {
     i: number,
     j: number,
     value: number[]

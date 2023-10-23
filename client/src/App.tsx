@@ -8,8 +8,8 @@ import Sets from "./components/Sets/Sets";
 
 function App() {
     const [dimension, setDimension] = useState<number>(0);
-    const [horSet, setHorSet] = useState<any>();
-    const [verSet, setVerSet] = useState<any>();
+    const [horSet, setHorSet] = useState<number[][]>();
+    const [verSet, setVerSet] = useState<number[][]>();
 
     const getInitialMatrix = (matrix: number[][]) => {
         setHorSet(horizontalSet(matrix));
