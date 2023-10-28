@@ -22,7 +22,7 @@ export const verticalSet = (matrix: number[][]) => {
     return verSet;
 }
 
-export const generateD = (horArr: number[][], verArr: number[][], omega: Array<number | undefined>): Array<dSet> => {
+export const generateD = (horArr: number[][], verArr: number[][], omega: Array<number | undefined>): dSet[] => {
     var dimension = horArr.length;
     var resArr = [];
     for (let i = 0; i < dimension; i++) {
@@ -42,30 +42,41 @@ export const sortD = (dSets: dSet[]) => {
     return dSets.sort((a, b) => b.value.length - a.value.length);
 }
 
-export const separateD = (sortedDSets: Array<dSet>): [Array<dSet>, Array<dSet>] => {
+export const separateD = (sortedDSets: Array<dSet>): dSet[][] => {
     const includedSetD = sortedDSets.filter((dSet) => dSet.value.includes(dSet.i) && dSet.value.includes(dSet.j));
     const notIncludedSetD = sortedDSets.filter((dSet) => !(dSet.value.includes(dSet.i) && dSet.value.includes(dSet.j)));
 
     return [includedSetD, notIncludedSetD];
 }
 
-export const generateOmegaMU = (omega10: Array<number | undefined>, includedD: dSet[], hor: any, ver: any) => {
+export const generateOmegaMU = (omega10: Array<number | undefined>, includedD: dSet[], hor: number[][], ver: number[][]): realmB[] => {
     var newOmega: any;
     var newS = [...includedD];
-    var stepD: dSet;
+    var stepD: any;
     var allOmegaSets = [];
     var allDSets = [];
+    var realmB: realmB[] = [];
 
     for (let i = 0; i < newS.length; i++) {
+        var curRealm: any = {};
         var omegaArr: Array<Array<number | undefined>> = [omega10];
         var dArr = [includedD];
+        var B: number[] = [];
+        var countB = 0;
         stepD = newS[i]
         newOmega = [...omega10];
+        console.log("Это итерация, ", i)
         while (newOmega && newOmega.length && newS) {
-            newOmega = stepD?.value?.filter((value, i, array) => {
-                return (stepD.i !== value && stepD.j !== value) &&
-                    newOmega.includes(array[i])
-            });
+            console.log(stepD)
+            newOmega = stepD.value
+                ? stepD.value.filter((value: any, i: any, array: any) => {
+                    return (stepD.i !== value && stepD.j !== value) &&
+                        newOmega.includes(array[i])
+                })
+                : [];
+            stepD.value
+                ? B.splice(countB, 0, stepD.i, stepD.j)
+                : B.splice(countB, 0, stepD);
 
             if (!newOmega) break;
 
@@ -76,13 +87,24 @@ export const generateOmegaMU = (omega10: Array<number | undefined>, includedD: d
             omegaArr.push(newOmega);
             dArr.push(generatedD);
 
-            stepD = generateD(hor, ver, newOmega)[0];
+            stepD = generatedD[0] ? generatedD[0] : newOmega[0];
+            countB++;
         }
+        curRealm.omega = omegaArr;
+        curRealm.dSet = dArr;
+        curRealm.B = B;
         allOmegaSets.push(omegaArr);
         allDSets.push(dArr);
+        realmB.push(curRealm);
     }
 
-    return [allOmegaSets, allDSets];
+    return realmB;
+}
+
+export type realmB = {
+    B: number[] | null,
+    omega: any | null,
+    dSet: dSet[][] | null
 }
 
 export type dSet = {

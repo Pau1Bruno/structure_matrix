@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./Sets.module.scss";
-import {dSet, generateD, generateOmegaMU, separateD, sortD} from "../../algorithms/structural_sets";
+import {generateD, generateOmegaMU, separateD, sortD} from "../../algorithms/structural_sets";
 
 type SetsProps = {
     horizontalSets: number[][],
@@ -10,7 +10,7 @@ type SetsProps = {
 const Sets = ({horizontalSets, verticalSets}: SetsProps) => {
     const omega10: Array<number | undefined> = horizontalSets.map((set, index) => {
         if (set.includes(index + 1)) return index + 1;
-    }).filter(val => val);
+    }).filter(val => val !== undefined);
 
     const dSets = generateD(horizontalSets, verticalSets, omega10);
     sortD(dSets);
@@ -18,19 +18,7 @@ const Sets = ({horizontalSets, verticalSets}: SetsProps) => {
     // includedD - S: dSet[]
     var [includedD, notIncludedD] = separateD(dSets);
 
-    var [omegaArr, dArr] = generateOmegaMU(omega10, includedD, horizontalSets, verticalSets);
-    console.log("dArr",dArr);
-    console.log("omega",omegaArr);
-
-    // var possiblePairs = includedD.map((dSet: dSet) => {
-    //     return `(${dSet.i}, ${dSet.j})`;
-    // })
-    //
-    var possiblePairs = (arr: any) => {
-        return arr.map((dSet: dSet) => {
-            return `(${dSet.i}, ${dSet.j})`;
-        })
-    }
+    var realmBArr = generateOmegaMU(omega10, includedD, horizontalSets, verticalSets);
 
     return (
         <div className={styles.container}>
@@ -84,11 +72,8 @@ const Sets = ({horizontalSets, verticalSets}: SetsProps) => {
 
                 <div className={styles.possiblePairs}>
                     <h3>Множества {"\u{03A9}"} и S (возможных продолжений)</h3>
-                    {omegaArr.map((omegaMu, i) =>
-                        <div>
-                            <p>{"\u{03A9}"}<sup>(1,{i})</sup> = {omegaMu.length ? `{${omegaMu}}` : "{ \u2205 }"}</p>
-                            <p>S <sup>(1,{i})</sup> = {possiblePairs(dArr[i]).length ? `{ ${possiblePairs(dArr[i]).join(", ")} }` : "{ \u2205 }"}</p>
-                        </div>
+                    {realmBArr.map(realm =>
+                        <div>Omega equals {realm.omega}</div>
                     )}
                 </div>
 
