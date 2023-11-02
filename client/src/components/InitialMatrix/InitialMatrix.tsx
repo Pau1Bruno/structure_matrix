@@ -7,11 +7,11 @@ type InitialMatrixProps = {
     getInitialMatrix: (matrix: number[][]) => number[][]
 }
 const InitialMatrix = ({dimension, getInitialMatrix}: InitialMatrixProps) => {
-    const inMatrix = Array.from({length: dimension},()=> Array.from({length: dimension}, () => 0))
+    const inMatrix = Array.from({length: dimension}, () => Array.from({length: dimension}, () => 0))
     const [initialMatrix, setInitialMatrix] = useState(inMatrix)
 
     const changeInputHandler = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
-        const row = Math.floor(i/dimension);
+        const row = Math.floor(i / dimension);
         const copy = [...initialMatrix];
         initialMatrix[row][i % dimension] = +e.target.value
         setInitialMatrix(copy);
@@ -24,13 +24,28 @@ const InitialMatrix = ({dimension, getInitialMatrix}: InitialMatrixProps) => {
 
     const handlePaste = () => {
         setInitialMatrix([
-            [0,1,0,0,1,1,1],
-            [0,0,0,1,0,0,1],
-            [0,0,0,1,0,1,1],
-            [0,0,0,0,1,0,1],
-            [1,0,1,0,1,1,0],
-            [1,1,1,1,1,0,1],
-            [0,1,0,1,0,1,0],
+            [0, 1, 0, 0, 1, 1, 1],
+            [0, 0, 0, 1, 0, 0, 1],
+            [0, 0, 0, 1, 0, 1, 1],
+            [0, 0, 0, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 1, 0],
+            [1, 1, 1, 1, 1, 0, 1],
+            [0, 1, 0, 1, 0, 1, 0],
+        ]);
+    }
+
+    const handlePaste1 = () => {
+        setInitialMatrix([
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 0, 1, 0, 1, 1, 1, 1, 1],
+            [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+            [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
         ]);
     }
 
@@ -49,6 +64,7 @@ const InitialMatrix = ({dimension, getInitialMatrix}: InitialMatrixProps) => {
                 )}
             </div>
             <button onClick={handlePaste}>Подставить пример</button>
+            <button onClick={handlePaste1}>Подставить пример с тетради</button>
             <button onClick={handleClick}>Начать подсчет</button>
         </div>
     );

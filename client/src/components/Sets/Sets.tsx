@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./Sets.module.scss";
-import {generateD, generateOmegaMU, separateD, sortD} from "../../algorithms/structural_sets";
+import {dSet, generateD, generateOmegaMU, separateD, sortD} from "../../algorithms/structural_sets";
+import Realm from "../Realm/Realm";
 
 type SetsProps = {
     horizontalSets: number[][],
@@ -19,7 +20,7 @@ const Sets = ({horizontalSets, verticalSets}: SetsProps) => {
     var [includedD, notIncludedD] = separateD(dSets);
 
     var realmBArr = generateOmegaMU(omega10, includedD, horizontalSets, verticalSets);
-
+    console.log(realmBArr[0].omega)
     return (
         <div className={styles.container}>
             <div className={styles.sets}>
@@ -46,7 +47,7 @@ const Sets = ({horizontalSets, verticalSets}: SetsProps) => {
             <div className={styles.dSets}>
                 <h3>Множества D:</h3>
                 <div className={styles.sets}>
-                    {includedD.map((dSet: any) =>
+                    {includedD.map((dSet: dSet) =>
                         <h4>
                             D
                             <p>(1,0)</p>
@@ -69,15 +70,7 @@ const Sets = ({horizontalSets, verticalSets}: SetsProps) => {
                         </h4>
                     )}
                 </div>
-
-                <div className={styles.possiblePairs}>
-                    <h3>Множества {"\u{03A9}"} и S (возможных продолжений)</h3>
-                    {realmBArr.map(realm =>
-                        <div>Omega equals {realm.omega}</div>
-                    )}
-                </div>
-
-
+                <Realm realmBArr={realmBArr}/>
             </div>
         </div>
     );
