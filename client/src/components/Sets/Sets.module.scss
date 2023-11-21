@@ -1,70 +1,70 @@
 .container {
-  .sets {
-    display: flex;
-    justify-content: space-around;
-
-    div {
-      width: fit-content;
-
-      h2 {
-        padding: 10px;
-      }
-
-      h4 {
-        margin-left: 80px;
-      }
-    }
-  }
-
-  .omega {
-    margin: 20px;
-    text-align: center;
-  }
-
-  .dSets {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 0 50px;
-
-    h3 {
-      padding: 20px;
-    }
-
     .sets {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 30px);
-      grid-auto-rows: 30px;
-
-      h4 {
         display: flex;
-        justify-content: center;
-
-        p {
-          font-size: 0.7em;
-
-          &:nth-child(1) {
-            position: relative;
-            bottom: 4px;
-          }
-
-          &:nth-child(2) {
-            position: relative;
-            top: 10px;
-            right: 21px;
-          }
-        }
+        justify-content: space-around;
 
         div {
-          position: relative;
-          right: 14px;
+            width: fit-content;
+
+            h2 {
+                padding: 10px;
+            }
+
+            h4 {
+                margin-left: 80px;
+            }
         }
-      }
     }
 
-    .possiblePairs {
-      margin: 30px;
+    .omega {
+        margin: 20px;
+        text-align: center;
     }
-  }
+
+    .dSets {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin: 0 50px;
+
+        h3 {
+            padding: 20px;
+        }
+
+        .sets {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 30px);
+            grid-auto-rows: 30px;
+
+            h4 {
+                display: flex;
+                justify-content: center;
+
+                p {
+                    font-size: 0.7em;
+
+                    &:nth-child(1) {
+                        position: relative;
+                        bottom: 4px;
+                    }
+
+                    &:nth-child(2) {
+                        position: relative;
+                        top: 10px;
+                        right: 21px;
+                    }
+                }
+
+                div {
+                    position: relative;
+                    right: 14px;
+                }
+            }
+        }
+
+        .possiblePairs {
+            margin: 30px;
+        }
+    }
 }

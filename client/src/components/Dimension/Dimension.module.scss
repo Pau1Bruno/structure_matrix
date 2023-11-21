@@ -1,30 +1,30 @@
 .container {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 
-  input {
-    text-align: center;
-    height: 30px;
-    width: 30px;
-    margin-left: 10px;
-    border-radius: 8px;
-  }
-
-  button {
-    background-color: white;
-    margin-left: 10px;
-    width: 80px;
-    border-radius: 20px;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: #b8efe9;
+    input {
+        text-align: center;
+        height: 30px;
+        width: 30px;
+        margin-left: 10px;
+        border-radius: 8px;
     }
 
-    &:active {
-      transition: linear;
-      transform: scale(1.1);
+    button {
+        background-color: white;
+        margin-left: 10px;
+        width: 80px;
+        border-radius: 20px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #b8efe9;
+        }
+
+        &:active {
+            transition: linear;
+            transform: scale(1.1);
+        }
     }
-  }
 }

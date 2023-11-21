@@ -1,36 +1,36 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h3 {
-    margin: 10px 0;
-  }
-
-  .matrix {
-    display: grid;
-  }
-
-  input {
     display: flex;
-    //margin: 10px;
-    margin: auto;
-  }
+    flex-direction: column;
+    align-items: center;
 
-  button {
-    margin: 20px;
-    width: 70px;
-    height: 40px;
-    border-radius: 8px;
-    background-color: white;
-
-    &:hover {
-      background-color: #b8efe9;
+    h3 {
+        margin: 10px 0;
     }
 
-    &:active {
-      transition: linear;
-      transform: scale(1.1);
+    .matrix {
+        display: grid;
     }
-  }
+
+    input {
+        display: flex;
+        //margin: 10px;
+        margin: auto;
+    }
+
+    button {
+        margin: 20px;
+        width: 70px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: white;
+
+        &:hover {
+            background-color: #b8efe9;
+        }
+
+        &:active {
+            transition: linear;
+            transform: scale(1.1);
+        }
+    }
 }
