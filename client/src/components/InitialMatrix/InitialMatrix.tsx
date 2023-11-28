@@ -25,10 +25,6 @@ const InitialMatrix = ({ dimension, getInitialMatrix }: InitialMatrixProps) => {
         setInitialMatrix(copy);
     };
 
-    // const changeInputPaste = () => {
-    //
-    // }
-
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         getInitialMatrix(initialMatrix);
@@ -44,7 +40,7 @@ const InitialMatrix = ({ dimension, getInitialMatrix }: InitialMatrixProps) => {
 
     return (
         <div className={styles.container}>
-            <h3>Задайте структурную матрицу исходной системы:</h3>
+            <h2>Задайте структурную матрицу исходной системы:</h2>
             <div
                 style={{
                     gridTemplateRows: `repeat(${dimension}, 50px)`,
@@ -61,9 +57,19 @@ const InitialMatrix = ({ dimension, getInitialMatrix }: InitialMatrixProps) => {
                         />
                     ))}
             </div>
-            <button onClick={handlePaste}>Подставить пример</button>
-            <button onClick={handlePaste1}>Подставить пример с тетради</button>
-            <button onClick={handleClick}>Начать подсчет</button>
+            <div className={styles.button_container}>
+                <button onClick={handlePaste}>Подставить пример</button>
+            </div>
+            <div className={styles.button_container}>
+                <button onClick={handlePaste1}>
+                    Подставить пример с тетради
+                </button>
+            </div>
+            <div className={styles.button_container}>
+                <button className={styles.calc} onClick={handleClick}>
+                    Начать подсчет
+                </button>
+            </div>
         </div>
     );
 };

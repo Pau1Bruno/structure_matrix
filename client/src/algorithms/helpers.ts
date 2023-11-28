@@ -1,4 +1,4 @@
-import { dSet } from "types/sets";
+import { dSet } from "../types/sets";
 
 export const sortD = (dSets: dSet[]) => {
     return dSets.sort((a, b) => b.value.length - a.value.length);

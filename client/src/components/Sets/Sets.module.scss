@@ -1,70 +1,31 @@
 .container {
     .sets {
+        padding: 20px;
         display: flex;
         justify-content: space-around;
 
-        div {
-            width: fit-content;
-
-            h2 {
-                padding: 10px;
-            }
-
-            h4 {
-                margin-left: 80px;
-            }
+        h3 {
+            padding: 5px 40px;
         }
     }
 
     .omega {
-        margin: 20px;
-        text-align: center;
+        height: 80px;
+        display: flex;
+        align-items: center;
+
+        h2 {
+            margin: 0 auto;
+        }
+
+        border-bottom: 2px solid black;
     }
 
-    .dSets {
-        text-align: center;
+    .records {
+        padding: 20px;
+        height: 80px;
         display: flex;
-        flex-direction: column;
-        margin: 0 50px;
-
-        h3 {
-            padding: 20px;
-        }
-
-        .sets {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 30px);
-            grid-auto-rows: 30px;
-
-            h4 {
-                display: flex;
-                justify-content: center;
-
-                p {
-                    font-size: 0.7em;
-
-                    &:nth-child(1) {
-                        position: relative;
-                        bottom: 4px;
-                    }
-
-                    &:nth-child(2) {
-                        position: relative;
-                        top: 10px;
-                        right: 21px;
-                    }
-                }
-
-                div {
-                    position: relative;
-                    right: 14px;
-                }
-            }
-        }
-
-        .possiblePairs {
-            margin: 30px;
-        }
+        justify-content: center;
+        gap: 100px;
     }
 }

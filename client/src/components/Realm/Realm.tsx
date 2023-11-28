@@ -1,21 +1,20 @@
 import React from "react";
-import { realmB, dSet } from "../../types/sets";
+import { dSet, realmBArr } from "../../types/sets";
 import styles from "./Realm.module.scss";
 
-
 type RealmProps = {
-    realmBArr: realmB[];
+    realmBArr: realmBArr;
 };
 
 const Realm = ({ realmBArr }: RealmProps) => {
     const possiblePairs = (dSet: dSet[]) => {
         return dSet.map((set: dSet) => ` (${set.i}, ${set.j})`);
     };
-    console.log(realmBArr);
+
     return (
         <div className={styles.realms}>
             <h3>Множества {"\u{03A9}"} и S (возможных продолжений)</h3>
-            {realmBArr.map((realm, indexR) => (
+            {realmBArr.realms.map((realm, indexR) => (
                 <div key={`realm${indexR}`} className={styles.realm}>
                     {realm.omega.map((omega: number[], index: number) => (
                         <div key={`omega${index}`} className={styles.omega}>

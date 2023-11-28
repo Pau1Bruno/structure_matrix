@@ -6,7 +6,7 @@ type DimensionProps = {
     setDimension: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Dimension = ({ dimension, setDimension }: DimensionProps) => {
+const Dimension = ({  setDimension }: DimensionProps) => {
     const [inputValue, setInputValue] = useState<number>(0);
 
     const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,12 +18,8 @@ const Dimension = ({ dimension, setDimension }: DimensionProps) => {
 
     return (
         <div className={styles.container}>
-            <h2>
-                <label>
-                    Задайте размерность:
-                    <input type={"text"} onChange={changeInput} />
-                </label>
-            </h2>
+            <h2>Задайте размерность: </h2>
+            <input type={"text"} onChange={changeInput} />
             <button onClick={changeDimension}>Выбрать</button>
         </div>
     );

@@ -9,15 +9,12 @@ type WeightsProps = {
 const Weights = ({ dimension }: WeightsProps) => {
     return (
         <div className={styles.container}>
-            <h3>Задайте веса:</h3>
+            <h2>Задайте веса:</h2>
             <div className={styles.weights}>
                 {Array(dimension)
                     .fill(1)
                     .map((_, i) => (
-                        <div key={i}>
-                            {`w${i + 1}`}
-                            <Cell />
-                        </div>
+                        <Cell key={"cell " + i} />
                     ))}
             </div>
         </div>

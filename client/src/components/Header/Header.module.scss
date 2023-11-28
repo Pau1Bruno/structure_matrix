@@ -1,10 +1,12 @@
 .header {
-    text-align: center;
-    background-color: #103362;
-    border-radius: 0 0 20% 20%;
+    background-color: #bfd7b5;
 
     h1 {
-        color: white;
-        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        height: 70px;
     }
 }

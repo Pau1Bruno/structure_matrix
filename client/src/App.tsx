@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Header from "components/Header/Header";
-import Dimension from "components/Dimension/Dimension";
-import Weights from "components/Weights/Weights";
-import InitialMatrix from "components/InitialMatrix/InitialMatrix";
-import { horizontalSet, verticalSet } from "algorithms/initial_sets";
-import Sets from "components/Sets/Sets";
+import Header from "./components/Header/Header";
+import Dimension from "./components/Dimension/Dimension";
+import Weights from "./components/Weights/Weights";
+import InitialMatrix from "./components/InitialMatrix/InitialMatrix";
+import { horizontalSet, verticalSet } from "./algorithms/initial_sets";
+import Sets from "./components/Sets/Sets";
+import "./global.scss";
+import styles from "./App.module.scss";
 
 function App() {
     const [dimension, setDimension] = useState<number>(0);
@@ -21,25 +23,30 @@ function App() {
         return (
             <div>
                 <Header />
-                <Dimension dimension={dimension} setDimension={setDimension} />
-                <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-                    Размерность не задана
-                </h1>
+                <div className={styles.page}>
+                    <Dimension
+                        dimension={dimension}
+                        setDimension={setDimension}
+                    />
+                    <h1 className={styles.errorDimension}>Размерность не задана</h1>
+                </div>
             </div>
         );
 
     return (
         <div>
             <Header />
-            <Dimension dimension={dimension} setDimension={setDimension} />
-            <Weights dimension={dimension} />
-            <InitialMatrix
-                dimension={dimension}
-                getInitialMatrix={getInitialMatrix}
-            />
-            {verSet && horSet && (
-                <Sets horizontalSets={horSet} verticalSets={verSet} />
-            )}
+            <div className={styles.page}>
+                <Dimension dimension={dimension} setDimension={setDimension} />
+                <Weights dimension={dimension} />
+                <InitialMatrix
+                    dimension={dimension}
+                    getInitialMatrix={getInitialMatrix}
+                />
+                {verSet && horSet && (
+                    <Sets horizontalSets={horSet} verticalSets={verSet} />
+                )}
+            </div>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import { separateD, sortD } from "./helpers";
-import { dSet, realmB } from "types/sets";
+import { dSet, realmB, realmBArr } from "../types/sets";
 
 export const generateD = (
     horArr: number[][],
@@ -29,13 +29,20 @@ export const generateOmegaMU = (
     includedD: dSet[],
     hor: number[][],
     ver: number[][],
-): realmB[] => {
-    let newOmega: any;
+): realmBArr => {
+    const allRealmsWithRecords: realmBArr = {
+        realms: [],
+        records: {
+            B1: [],
+            B2: [],
+        },
+    };
+    let newOmega: number[];
     const newS = [...includedD];
     let stepD: any;
     const allOmegaSets = [];
     const allDSets = [];
-    const realmB: realmB[] = [];
+    const realmBArr: realmB[] = [];
     let recordB1: number[] = [],
         recordB2: number[] = [];
 
@@ -112,7 +119,6 @@ export const generateOmegaMU = (
 
             if (!omega2.length) break;
 
-            //  Calculate D(1,1) equals S(1,1) ...
             generatedD2 = generateD(hor, ver, omega2);
 
             stepD2 = generatedD2[0];
@@ -123,8 +129,13 @@ export const generateOmegaMU = (
             recordB1 = B1;
             recordB2 = B2;
         }
-        realmB.push(curRealm);
+        realmBArr.push(curRealm);
     }
+    allRealmsWithRecords.realms = realmBArr;
+    allRealmsWithRecords.records = {
+        B1: recordB1,
+        B2: recordB2,
+    };
 
-    return realmB;
+    return allRealmsWithRecords;
 };
