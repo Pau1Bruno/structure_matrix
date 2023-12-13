@@ -24,6 +24,15 @@ export const verticalSet = (matrix: number[][]) => {
     return verSet;
 };
 
+export const generateIm = (length: number) => {
+    const Im = [];
+    for (let i = 1; i < length + 1; i++) {
+        Im.push(i);
+    }
+    
+    return Im;
+}
+
 export const initialOmega = (hor: number[][]): number[] => {
     const omega: number[] = [];
     hor.map((set, index) => {

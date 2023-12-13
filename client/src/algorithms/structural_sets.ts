@@ -91,6 +91,8 @@ export const generateOmegaMU = (
         let generatedD2 = generateD(hor, ver, omega2);
 
         const included = separateD(generatedD2);
+        
+        // if (B1.includes(2) && B1.includes(3) && B1.includes(5) && B1.includes(8) && B1.includes(10)) console.log(B1)
 
         const B2: number[] = [];
         let countB2 = 0;
@@ -136,6 +138,23 @@ export const generateOmegaMU = (
         B1: recordB1,
         B2: recordB2,
     };
-
+    
+    console.log(allRealmsWithRecords);
     return allRealmsWithRecords;
 };
+
+export const generatePermutation = (
+    B1: number[],
+    B2: number[],
+    Im: number[],
+    horArr: number[][],
+    verArr: number[][]) => {
+    const permutation: number[] = [];
+    const w0 = Im.filter(el => !B1.includes(el) && !B2.includes(el));
+    w0.forEach(gi => permutation.push(gi));
+    B1.forEach(gi => permutation.push(gi));
+    B2.forEach(gi => permutation.push(gi));
+    
+    console.log(permutation);
+    return permutation;
+}

@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Sets.module.scss";
 import { separateD } from "../../algorithms/helpers";
-import { initialOmega } from "../../algorithms/initial_sets";
-import { generateD, generateOmegaMU } from "../../algorithms/structural_sets";
+import { generateIm, initialOmega } from "../../algorithms/initial_sets";
+import { generateD, generateOmegaMU, generatePermutation } from "../../algorithms/structural_sets";
 
 type SetsProps = {
     horizontalSets: number[][];
@@ -16,6 +16,8 @@ const Sets = ({ horizontalSets, verticalSets }: SetsProps) => {
 
     // includedD - S: dSet[]
     const includedD = separateD(dSets);
+    
+    const Im = generateIm(horizontalSets.length);
 
     const realmBArr = generateOmegaMU(
         omega10,
@@ -23,7 +25,15 @@ const Sets = ({ horizontalSets, verticalSets }: SetsProps) => {
         horizontalSets,
         verticalSets,
     );
-
+    
+    const permutation = generatePermutation(
+        realmBArr.records.B1,
+        realmBArr.records.B2,
+        Im,
+        horizontalSets,
+        verticalSets
+    )
+    
     return (
         <div className={styles.container}>
             <div className={styles.sets}>
@@ -58,6 +68,12 @@ const Sets = ({ horizontalSets, verticalSets }: SetsProps) => {
             <div className={styles.records}>
                 <h2>{`B1 = {${realmBArr.records.B1}}`}</h2>
                 <h2>{`B2 = {${realmBArr.records.B2}}`}</h2>
+            </div>
+            
+            <div className={styles.permutation}>
+                <h1>Перестановка: </h1>
+                <h2>{`${Im.join(" ")}`}</h2>
+                <h2>{`${permutation.join(" ")}`}</h2>
             </div>
         </div>
     );

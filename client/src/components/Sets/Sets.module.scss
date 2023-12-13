@@ -27,5 +27,17 @@
         display: flex;
         justify-content: center;
         gap: 100px;
+        border-bottom: 2px solid black;
+    }
+
+    .permutation {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            margin-bottom: 20px;
+        }
     }
 }
