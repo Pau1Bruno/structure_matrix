@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/structure_matrix/static/css/main.cd54a62d.css",
+    "main.js": "/structure_matrix/static/js/main.d0f11674.js",
+    "index.html": "/structure_matrix/index.html",
+    "main.cd54a62d.css.map": "/structure_matrix/static/css/main.cd54a62d.css.map",
+    "main.d0f11674.js.map": "/structure_matrix/static/js/main.d0f11674.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd54a62d.css",
+    "static/js/main.d0f11674.js"
+  ]
+}
